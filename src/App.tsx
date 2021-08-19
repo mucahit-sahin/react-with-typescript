@@ -1,8 +1,11 @@
+import Items from "./Components/Items";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
-    <div className="container mx-auto mt-4 ">
-      
+    <div className="font-myriad">
+      <Navbar />
+      <Items />
     </div>
   );
 }
