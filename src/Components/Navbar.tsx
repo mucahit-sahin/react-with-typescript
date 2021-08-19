@@ -1,6 +1,9 @@
-import React from "react";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
+  const [search, setSearch] = useState<string>("");
+  const history = useHistory();
   return (
     <nav className="bg-supernova-500 ">
       <div className="container mx-auto px-3 py-2 flex flex-row ">
@@ -14,7 +17,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="flex-1 flex items-center">
+        <div className="hidden md:flex flex-1 items-center">
           <ul className="hidden md:block flex-row">
             <a href="/" className="mr-4 text-gray-800 hover:text-gray-700">
               Movies
@@ -29,7 +32,12 @@ const Navbar = () => {
             type="search"
             name="search"
             placeholder="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             className="flex-grow w-full px-4 py-2 rounded-l-full rounded-r-full text-sm focus:outline-none"
+            onKeyDown={(e) =>
+              e.key === "Enter" && history.push("/?search=" + search)
+            }
           />
         </div>
         <div className="flex-1 flex items-center justify-end">

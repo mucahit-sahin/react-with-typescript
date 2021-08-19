@@ -12,7 +12,11 @@ const CardItem = ({ movie }: CardItemProps) => {
       <div className="">
         <img
           className="w-full"
-          src={"https://image.tmdb.org/t/p/w500" + poster_path}
+          src={
+            poster_path
+              ? "https://image.tmdb.org/t/p/w500" + poster_path
+              : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWcWg0E8pSjBNi0TtiZsqu8uD2PAr_K11DA&usqp=CAU"
+          }
           alt="poster"
         />
       </div>
