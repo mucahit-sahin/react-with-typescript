@@ -13,7 +13,7 @@ const Navbar = () => {
               <a href="/">Movies</a>
             </li>
             <li>
-              <a href="/">Actor/Actress</a>
+              <a href="/persons">Actor/Actress</a>
             </li>
           </ul>
         </div>
@@ -22,7 +22,7 @@ const Navbar = () => {
             <a href="/" className="mr-4 text-gray-800 hover:text-gray-700">
               Movies
             </a>
-            <a href="/" className="mr-4 hover:text-gray-700">
+            <a href="/persons" className="mr-4 hover:text-gray-700">
               Actor/Actress
             </a>
           </ul>

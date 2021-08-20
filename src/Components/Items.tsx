@@ -20,7 +20,6 @@ const Items = () => {
   }, [dispatch, pageNumber, search]);
 
   const { data, loading } = useSelector((state: AppState) => state.movies);
-  console.log(data);
   return (
     <div className="flex flex-col">
       <div className="container mx-auto my-2">

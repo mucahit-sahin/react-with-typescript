@@ -5,12 +5,14 @@ interface PaginationTypes {
   total_results: number;
   pageNumber: string;
   search: string | null;
+  pathname?: string;
 }
 const Pagination = ({
   total_pages,
   total_results,
   pageNumber,
   search,
+  pathname,
 }: PaginationTypes) => {
   return (
     <div className="flex flex-1 items-center justify-center my-2">
@@ -44,13 +46,14 @@ const Pagination = ({
             >
               <a
                 href={
-                  parseInt(pageNumber) === 1
-                    ? "/?page=" +
+                  (pathname ? pathname : "/") +
+                  (parseInt(pageNumber) === 1
+                    ? "?page=" +
                       pageNumber +
                       (search ? "&&search=" + search : "")
-                    : "/?page=" +
+                    : "?page=" +
                       (parseInt(pageNumber) - 1) +
-                      (search ? "&&search=" + search : "")
+                      (search ? "&&search=" + search : ""))
                 }
                 className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
               >
@@ -59,7 +62,10 @@ const Pagination = ({
               </a>
               <a
                 href={
-                  "/?page=" + pageNumber + (search ? "&&search=" + search : "")
+                  (pathname ? pathname : "/") +
+                  "?page=" +
+                  pageNumber +
+                  (search ? "&&search=" + search : "")
                 }
                 aria-current="page"
                 className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
@@ -68,7 +74,8 @@ const Pagination = ({
               </a>
               <a
                 href={
-                  "/?page=" +
+                  (pathname ? pathname : "/") +
+                  "?page=" +
                   (parseInt(pageNumber) + 1) +
                   (search ? "&&search=" + search : "")
                 }
@@ -81,7 +88,8 @@ const Pagination = ({
               </span>
               <a
                 href={
-                  "/?page=" +
+                  (pathname ? pathname : "/") +
+                  "?page=" +
                   (total_pages - 1) +
                   (search ? "&&search=" + search : "")
                 }
@@ -91,7 +99,10 @@ const Pagination = ({
               </a>
               <a
                 href={
-                  "/?page=" + total_pages + (search ? "&&search=" + search : "")
+                  (pathname ? pathname : "/") +
+                  "?page=" +
+                  total_pages +
+                  (search ? "&&search=" + search : "")
                 }
                 className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
@@ -99,13 +110,14 @@ const Pagination = ({
               </a>
               <a
                 href={
-                  parseInt(pageNumber) === total_pages
+                  (pathname ? pathname : "/") +
+                  (parseInt(pageNumber) === total_pages
                     ? "/?page=" +
                       pageNumber +
                       (search ? "&&search=" + search : "")
                     : "/?page=" +
                       (parseInt(pageNumber) + 1) +
-                      (search ? "&&search=" + search : "")
+                      (search ? "&&search=" + search : ""))
                 }
                 className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
               >
