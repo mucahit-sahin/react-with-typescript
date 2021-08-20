@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [search, setSearch] = useState<string>("");
+  const { pathname } = useLocation();
   const history = useHistory();
   return (
     <nav className="bg-supernova-500 ">
@@ -31,12 +32,15 @@ const Navbar = () => {
           <input
             type="search"
             name="search"
-            placeholder="Search"
+            placeholder={
+              "Search " + (pathname === "/persons" ? "Person" : "Movie")
+            }
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="flex-grow w-full px-4 py-2 rounded-l-full rounded-r-full text-sm focus:outline-none"
             onKeyDown={(e) =>
-              e.key === "Enter" && history.push("/?search=" + search)
+              e.key === "Enter" &&
+              history.push((pathname ? pathname : "/") + "?search=" + search)
             }
           />
         </div>
