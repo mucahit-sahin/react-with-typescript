@@ -1,5 +1,4 @@
 const colors = require("tailwindcss/colors");
-const defaultTheme = require("tailwindcss/defaultTheme");
 
 // tailwind.config.js
 module.exports = {
@@ -8,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        myriad: ["Myriad Pro Cond", ...defaultTheme.fontFamily.sans],
+        myriad: "Myriad Pro Cond",
       },
     },
     colors: {
