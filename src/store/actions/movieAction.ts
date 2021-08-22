@@ -1,5 +1,5 @@
 import api from "../../api";
-import { Movies, MovieDispatch } from "../../types/movies";
+import { Movies, MovieDispatch, MovieDetail } from "../../types/movies";
 
 export const getPopularMovies = (pageNumber:string|null) => async (dispatch: MovieDispatch) => {
     dispatch({ type: "GET_MOVIES_START" });
@@ -19,5 +19,15 @@ export const searchMovie = (pageNumber:string|null,search:string) => async (disp
         dispatch({ type: "GET_MOVIES_SUCCESS" ,payload:response.data});
     } catch (error) {
         dispatch({ type: "GET_MOVIES_ERROR" });
+    }
+}
+
+export const getMovieDetails = (id:string) => async (dispatch: MovieDispatch) => {
+    dispatch({ type: "GET_MOVIE_START" });
+    try {
+        const response = await api.get<MovieDetail>(`movie/${id}?api_key=ce2cd2a272535ed78b02d47570778045&language=en-US`);
+        dispatch({ type: "GET_MOVIE_SUCCESS", payload: response.data });
+    } catch (error) {
+        dispatch({ type: "GET_MOVIE_ERROR" });
     }
 }
