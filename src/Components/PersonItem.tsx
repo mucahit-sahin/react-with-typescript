@@ -5,10 +5,10 @@ interface PersonItemProps {
 }
 
 const PersonItem = ({ person }: PersonItemProps) => {
-  const { profile_path, name, known_for_department, popularity } = person;
+  const { profile_path, name, known_for_department, popularity, id } = person;
   return (
-    <div className="flex flex-col w-full">
-      <div className="">
+    <a href={"/person?id=" + id} key={id} className="flex flex-col w-full">
+      <div className="flex">
         <img
           className="w-full"
           src={
@@ -28,7 +28,7 @@ const PersonItem = ({ person }: PersonItemProps) => {
           {known_for_department}
         </span>
       </div>
-    </div>
+    </a>
   );
 };
 

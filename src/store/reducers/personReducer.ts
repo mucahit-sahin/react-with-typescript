@@ -7,8 +7,14 @@ function personReducer (state:PersonsState = defaultState,action:PersonAction) {
         case "GET_PERSONS_START":
             return {...state,loading:true,error:""};
         case "GET_PERSONS_SUCCESS":
-            return {data:action.payload,loading:false,error:""};;
+            return {data:action.payload,loading:false,error:""};
         case "GET_PERSONS_ERROR":
+            return { ...state, loading: false, error: "There is a error!" };
+        case "GET_PERSON_START":
+            return {...state,loading:true,error:""};
+        case "GET_PERSON_SUCCESS":
+            return {...state,personDetails:action.payload,loading:false,error:""};;
+        case "GET_PERSON_ERROR":
             return {...state,loading:false,error:"There is a error!"};;
         default:
             return state;

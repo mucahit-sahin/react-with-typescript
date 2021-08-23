@@ -4,6 +4,7 @@ export interface PersonsState {
     data: Persons ;
     loading: boolean;
     error: string;
+    personDetails?: PersonDetails;
 }
   
 export interface Persons {
@@ -45,7 +46,26 @@ export interface KnownFor {
     video?: boolean;
 }
 
+//Person Details
 
+export interface PersonDetails {
+    adult: boolean;
+    also_known_as: string[];
+    biography: string;
+    birthday: string;
+    deathday?: any;
+    gender: number;
+    homepage?: any;
+    id: number;
+    imdb_id: string;
+    known_for_department: string;
+    name: string;
+    place_of_birth: string;
+    popularity: number;
+    profile_path: string;
+}
+
+//-Person Details
 
 interface GET_START {
     type: "GET_PERSONS_START";
@@ -59,8 +79,21 @@ interface GET_SUCCESS {
 interface GET_ERROR {
     type: "GET_PERSONS_ERROR";
 }
+
+interface GET_PERSON_START {
+    type: "GET_PERSON_START";
+}
   
-export type PersonAction = GET_START | GET_SUCCESS | GET_ERROR;
+interface GET_PERSON_SUCCESS {
+    type: "GET_PERSON_SUCCESS";
+    payload: PersonDetails;
+}
+  
+interface GET_PERSON_ERROR {
+    type: "GET_PERSON_ERROR";
+}
+  
+export type PersonAction = GET_START | GET_SUCCESS | GET_ERROR|GET_PERSON_START | GET_PERSON_SUCCESS | GET_PERSON_ERROR;
 
 export type PersonDispatch = ThunkDispatch<
 PersonsState,
