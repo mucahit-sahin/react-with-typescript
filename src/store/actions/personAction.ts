@@ -1,5 +1,5 @@
 import api from "../../api";
-import { PersonDetails, PersonDispatch, Persons } from "../../types/persons";
+import { PersonCredits, PersonDetails, PersonDispatch, Persons } from "../../types/persons";
 
 export const getPopularPersons = (pageNumber:string|null) => async (dispatch: PersonDispatch) => {
     dispatch({ type: "GET_PERSONS_START" });
@@ -26,8 +26,20 @@ export const getPersonDetails = (id:string) => async (dispatch: PersonDispatch) 
     dispatch({ type: "GET_PERSON_START" });
     try {
         const response = await api.get<PersonDetails>(`person/${id}?api_key=ce2cd2a272535ed78b02d47570778045&language=en-US`);
-        dispatch({ type: "GET_PERSON_SUCCESS", payload: response.data });
+       
+        dispatch({ type: "GET_PERSON_SUCCESS", payload:response.data});
     } catch (error) {
         dispatch({ type: "GET_PERSON_ERROR" });
+    }
+}
+
+export const getPersonCredits = (id: string) => async (dispatch: PersonDispatch) => {
+    dispatch({ type: "GET_PERSON_MOVIES_START" });
+    try {
+        const response = await api.get<PersonCredits>(`person/${id}}/movie_credits?api_key=ce2cd2a272535ed78b02d47570778045&language=en-US`);
+       
+        dispatch({ type: "GET_PERSON_MOVIES_SUCCESS", payload:response.data});
+    } catch (error) {
+        dispatch({ type: "GET_PERSON_MOVIES_ERROR" });
     }
 }

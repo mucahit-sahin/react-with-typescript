@@ -60,7 +60,7 @@ const MovieDetails = () => {
                   </div>
                   <div className="flex-1 flex flex-col items-center sm:justify-center">
                     <span className="mr-3">Popularity</span>
-                    <span className="mr-3 p-1 w-12 h-12 bg-supernova-500 text-sm text-center flex items-center justify-center">
+                    <span className="mr-3 p-1 h-12 bg-supernova-500 text-sm text-center flex items-center justify-center">
                       {movieDetail?.popularity}
                     </span>
                   </div>

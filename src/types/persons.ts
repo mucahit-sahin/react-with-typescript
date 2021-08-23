@@ -1,10 +1,12 @@
 import { ThunkDispatch } from "redux-thunk";
+import { Movie } from "./movies";
 
 export interface PersonsState {
     data: Persons ;
     loading: boolean;
     error: string;
     personDetails?: PersonDetails;
+    personCredits?: PersonCredits;
 }
   
 export interface Persons {
@@ -67,6 +69,15 @@ export interface PersonDetails {
 
 //-Person Details
 
+// Person Credits
+export interface PersonCredits {
+    cast: Movie[];
+    crew: any[];
+    id: number;
+}
+
+// - Person Credits
+
 interface GET_START {
     type: "GET_PERSONS_START";
 }
@@ -92,8 +103,21 @@ interface GET_PERSON_SUCCESS {
 interface GET_PERSON_ERROR {
     type: "GET_PERSON_ERROR";
 }
+
+interface GET_PERSON_MOVIES_START {
+    type: "GET_PERSON_MOVIES_START";
+}
   
-export type PersonAction = GET_START | GET_SUCCESS | GET_ERROR|GET_PERSON_START | GET_PERSON_SUCCESS | GET_PERSON_ERROR;
+interface GET_PERSON_MOVIES_SUCCESS {
+    type: "GET_PERSON_MOVIES_SUCCESS";
+    payload: PersonCredits;
+}
+  
+interface GET_PERSON_MOVIES_ERROR {
+    type: "GET_PERSON_MOVIES_ERROR";
+}
+  
+export type PersonAction = GET_START | GET_SUCCESS | GET_ERROR|GET_PERSON_START | GET_PERSON_SUCCESS | GET_PERSON_ERROR|GET_PERSON_MOVIES_START|GET_PERSON_MOVIES_SUCCESS|GET_PERSON_MOVIES_ERROR;
 
 export type PersonDispatch = ThunkDispatch<
 PersonsState,
