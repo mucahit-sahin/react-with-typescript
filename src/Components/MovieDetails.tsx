@@ -1,19 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { FaImdb } from "react-icons/fa";
 import { AppState } from "../store";
-import { getMovieDetails } from "../store/actions/movieAction";
+import { getMovieCredit, getMovieDetails } from "../store/actions/movieAction";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const id = new URLSearchParams(useLocation().search).get("id");
 
   useEffect(() => {
     id && dispatch(getMovieDetails(id));
+    id && dispatch(getMovieCredit(id));
   }, [dispatch, id]);
 
-  const { movieDetail, loading } = useSelector(
+  const { movieDetail, movieCredit, loading } = useSelector(
     (state: AppState) => state.movies
   );
 
@@ -32,13 +35,13 @@ const MovieDetails = () => {
             }}
           >
             <div className="flex flex-col  w-full bg-supernova-300 bg-opacity-60 min-h-screen sm:flex-row px-10">
-              <div className="mt-10">
+              <div className="mt-10 sm:w-1/3">
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movieDetail?.poster_path}`}
                   alt="poster"
                 />
               </div>
-              <div className=" my-5 flex flex-col sm:mx-10">
+              <div className=" my-5 flex flex-col sm:mx-10 w-2/3">
                 <span className="text-left text-lg md:text-xl lg:text-2xl xl:text-4xl ">
                   {movieDetail?.title}
                 </span>
@@ -95,6 +98,29 @@ const MovieDetails = () => {
                     <span key={genre.id} className="bg-supernova-500 mr-3 p-2">
                       {genre.name}
                     </span>
+                  ))}
+                </div>
+                <div className="flex flex-col mt-3">
+                  <span className="text-lg mb-2">Cast</span>
+                  {movieCredit?.cast.map((person) => (
+                    <div
+                      key={person.id}
+                      className="flex flex-row items-center border-b hover:bg-gray-200"
+                      onClick={() => history.push("/person?id=" + person.id)}
+                    >
+                      <div className="flex flex-1 p-1">
+                        <img
+                          className="h-20"
+                          src={
+                            "https://image.tmdb.org/t/p/w200" +
+                            person.profile_path
+                          }
+                          alt="cast"
+                        />
+                      </div>
+                      <span className="flex flex-1">{person.name}</span>
+                      <span className="flex flex-1">{person.character} </span>
+                    </div>
                   ))}
                 </div>
               </div>

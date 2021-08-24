@@ -27,7 +27,7 @@ const PersonDetails = () => {
         <span>Loading</span>
       ) : (
         <>
-          <div className="flex p-2 justify-center">
+          <div className="flex p-2 justify-center sm:w-1/3">
             <img
               className="rounded sm:h-96 "
               src={

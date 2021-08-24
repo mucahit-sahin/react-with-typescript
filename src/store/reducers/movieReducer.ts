@@ -7,15 +7,21 @@ function movieReducer (state:MoviesState = defaultState,action:MovieAction) {
         case "GET_MOVIES_START":
             return {...state,loading:true,error:""};
         case "GET_MOVIES_SUCCESS":
-            return {...state,data:action.payload,loading:false,error:""};;
+            return {...state,data:action.payload,loading:false,error:""};
         case "GET_MOVIES_ERROR":
-            return { ...state, loading: false, error: "There is a error!" };;
+            return { ...state, loading: false, error: "There is a error!" };
         case "GET_MOVIE_START":
-            return {...state,loading:true,error:""};
+            return { ...state, loading: true, error: "" };
         case "GET_MOVIE_SUCCESS":
-            return {...state,movieDetail:action.payload,loading:false,error:""};;
+            return {...state,movieDetail:action.payload,loading:false,error:""};
         case "GET_MOVIE_ERROR":
-            return { ...state, loading: false, error: "There is a error!" };;    
+            return { ...state, loading: false, error: "There is a error!" };
+        case "GET_MOVIE_CREDIT_START":
+            return {...state,loading:true,error:""};
+        case "GET_MOVIE_CREDIT_SUCCESS":
+            return {...state,movieCredit:action.payload,loading:false,error:""};
+        case "GET_MOVIE_CREDIT_ERROR":
+            return { ...state, loading: false, error: "There is a error!" };  
         default:
             return state;
     }

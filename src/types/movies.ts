@@ -3,6 +3,7 @@ import { ThunkDispatch } from "redux-thunk";
 export interface MoviesState {
   data: Movies ;
   movieDetail?: MovieDetail;
+  movieCredit?: MovieCredit;
   loading: boolean;
   error: string;
 }
@@ -94,6 +95,46 @@ export interface MovieDetail {
 
 // -Movie Detail
 
+// Movie Person
+
+
+export interface Cast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+export interface Crew {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  credit_id: string;
+  department: string;
+  job: string;
+}
+export interface MovieCredit {
+  id: number;
+  cast: Cast[];
+  crew: Crew[];
+}
+
+
+// -Movie Person
+
+
 interface GET_START {
     type: "GET_MOVIES_START";
 }
@@ -120,7 +161,20 @@ interface GET_MOVIE_ERROR {
   type: "GET_MOVIE_ERROR";
 }
 
-export type MovieAction = GET_START | GET_SUCCESS | GET_ERROR | GET_MOVIE_START | GET_MOVIE_SUCCESS | GET_MOVIE_ERROR;
+interface GET_MOVIE_CREDIT_START {
+  type: "GET_MOVIE_CREDIT_START";
+}
+
+interface GET_MOVIE_CREDIT_SUCCESS {
+  type: "GET_MOVIE_CREDIT_SUCCESS";
+  payload: MovieCredit;
+}
+
+interface GET_MOVIE_CREDIT_ERROR {
+  type: "GET_MOVIE_CREDIT_ERROR";
+}
+
+export type MovieAction = GET_START | GET_SUCCESS | GET_ERROR | GET_MOVIE_START | GET_MOVIE_SUCCESS | GET_MOVIE_ERROR|GET_MOVIE_CREDIT_START|GET_MOVIE_CREDIT_SUCCESS|GET_MOVIE_CREDIT_ERROR;
 
 export type MovieDispatch = ThunkDispatch<
   MoviesState,
