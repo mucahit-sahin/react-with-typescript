@@ -3,8 +3,11 @@ import { useHistory, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [search, setSearch] = useState<string>("");
-  const { pathname } = useLocation();
+  let { pathname } = useLocation();
   const history = useHistory();
+
+  if (pathname === "/person") pathname = "/persons";
+  if (pathname === "/movie") pathname = "/";
   return (
     <nav className="bg-supernova-500 ">
       <div className="container mx-auto px-3 py-2 flex flex-row ">
