@@ -112,10 +112,10 @@ const Pagination = ({
                 href={
                   (pathname ? pathname : "/") +
                   (parseInt(pageNumber) === total_pages
-                    ? "/?page=" +
+                    ? "?page=" +
                       pageNumber +
                       (search ? "&&search=" + search : "")
-                    : "/?page=" +
+                    : "?page=" +
                       (parseInt(pageNumber) + 1) +
                       (search ? "&&search=" + search : ""))
                 }
