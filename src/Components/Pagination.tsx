@@ -6,6 +6,7 @@ interface PaginationTypes {
   pageNumber: string;
   search: string | null;
   pathname?: string;
+  genre?: string | null;
 }
 const Pagination = ({
   total_pages,
@@ -13,19 +14,36 @@ const Pagination = ({
   pageNumber,
   search,
   pathname,
+  genre,
 }: PaginationTypes) => {
   return (
     <div className="flex flex-1 items-center justify-center my-2">
       <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
         <div className="flex-1 flex justify-between sm:hidden">
           <a
-            href="/"
+            href={
+              (pathname ? pathname : "/") +
+              (parseInt(pageNumber) === 1
+                ? "?page=" + pageNumber + (search ? "&&search=" + search : "")
+                : "?page=" +
+                  (parseInt(pageNumber) - 1) +
+                  (search ? "&&search=" + search : "")) +
+              (genre ? "&&genre=" + genre : "")
+            }
             className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
           >
             Previous
           </a>
           <a
-            href="/"
+            href={
+              (pathname ? pathname : "/") +
+              (parseInt(pageNumber) === total_pages
+                ? "?page=" + pageNumber + (search ? "&&search=" + search : "")
+                : "?page=" +
+                  (parseInt(pageNumber) + 1) +
+                  (search ? "&&search=" + search : "")) +
+              (genre ? "&&genre=" + genre : "")
+            }
             className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
           >
             Next
@@ -53,7 +71,8 @@ const Pagination = ({
                       (search ? "&&search=" + search : "")
                     : "?page=" +
                       (parseInt(pageNumber) - 1) +
-                      (search ? "&&search=" + search : ""))
+                      (search ? "&&search=" + search : "")) +
+                  (genre ? "&&genre=" + genre : "")
                 }
                 className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
               >
@@ -65,7 +84,8 @@ const Pagination = ({
                   (pathname ? pathname : "/") +
                   "?page=" +
                   pageNumber +
-                  (search ? "&&search=" + search : "")
+                  (search ? "&&search=" + search : "") +
+                  (genre ? "&&genre=" + genre : "")
                 }
                 aria-current="page"
                 className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
@@ -77,7 +97,8 @@ const Pagination = ({
                   (pathname ? pathname : "/") +
                   "?page=" +
                   (parseInt(pageNumber) + 1) +
-                  (search ? "&&search=" + search : "")
+                  (search ? "&&search=" + search : "") +
+                  (genre ? "&&genre=" + genre : "")
                 }
                 className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
@@ -91,7 +112,8 @@ const Pagination = ({
                   (pathname ? pathname : "/") +
                   "?page=" +
                   (total_pages - 1) +
-                  (search ? "&&search=" + search : "")
+                  (search ? "&&search=" + search : "") +
+                  (genre ? "&&genre=" + genre : "")
                 }
                 className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
@@ -102,7 +124,8 @@ const Pagination = ({
                   (pathname ? pathname : "/") +
                   "?page=" +
                   total_pages +
-                  (search ? "&&search=" + search : "")
+                  (search ? "&&search=" + search : "") +
+                  (genre ? "&&genre=" + genre : "")
                 }
                 className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
@@ -117,7 +140,8 @@ const Pagination = ({
                       (search ? "&&search=" + search : "")
                     : "?page=" +
                       (parseInt(pageNumber) + 1) +
-                      (search ? "&&search=" + search : ""))
+                      (search ? "&&search=" + search : "")) +
+                  (genre ? "&&genre=" + genre : "")
                 }
                 className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
               >

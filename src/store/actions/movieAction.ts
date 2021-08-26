@@ -1,11 +1,12 @@
 import api from "../../api";
 import { Movies, MovieDispatch, MovieDetail, MovieCredit } from "../../types/movies";
 
-export const getPopularMovies = (pageNumber:string|null) => async (dispatch: MovieDispatch) => {
+export const getPopularMovies = (pageNumber:string|null,genre:string|null) => async (dispatch: MovieDispatch) => {
     dispatch({ type: "GET_MOVIES_START" });
     try {
-        const response = await api.get<Movies>(`movie/popular?api_key=ce2cd2a272535ed78b02d47570778045&language=en-US&page=${pageNumber===null?"1":pageNumber}`);
+        const response = await api.get<Movies>(`movie/popular?api_key=ce2cd2a272535ed78b02d47570778045&language=en-US&page=${pageNumber === null ? "1" : pageNumber}&${genre && "with_genres="+genre}`);
         dispatch({ type: "GET_MOVIES_SUCCESS" ,payload:response.data});
+        console.log(response.data);
     } catch (error) {
         dispatch({ type: "GET_MOVIES_ERROR" });
     }

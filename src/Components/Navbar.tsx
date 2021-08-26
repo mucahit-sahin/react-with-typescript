@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
+import { MovieGenres } from "../data/genres";
 
 const Navbar = () => {
   const [search, setSearch] = useState<string>("");
   const [menu, setMenu] = useState<boolean>(false);
+  const [genres, setGenres] = useState<boolean>(false);
   let { pathname } = useLocation();
   const history = useHistory();
 
   if (pathname === "/person") pathname = "/persons";
   if (pathname === "/movie") pathname = "/";
   return (
-    <nav className="bg-supernova-500 ">
+    <nav className="bg-supernova-500 " onMouseLeave={() => setGenres(false)}>
       <div className="container mx-auto px-3 py-2 flex flex-col ">
         <div className="flex flex-row items-center">
           <div className="flex-1  transition duration-500 ease-in-out md:hidden">
@@ -19,7 +21,11 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex flex-1 items-center">
             <ul className="hidden md:block flex-row">
-              <a href="/" className="mr-4 text-gray-800 hover:text-gray-700">
+              <a
+                href="/"
+                className="mr-4 text-gray-800 hover:text-gray-700"
+                onMouseEnter={() => setGenres(true)}
+              >
                 Movies
               </a>
               <a href="/persons" className="mr-4 hover:text-gray-700">
@@ -63,14 +69,39 @@ const Navbar = () => {
           </div>
         </div>
         {menu && (
-          <ul className="sm:hidden" id="nav-menu">
+          <ul className="flex flex-row sm:hidden" id="nav-menu">
             <li>
               <a href="/">Movies</a>
+              <ul className="ml-3 ">
+                {MovieGenres.map((genre) => (
+                  <li key={genre.id} className="hover:text-gray-100">
+                    <a href={"/?genre=" + genre.id}>{genre.name}</a>
+                  </li>
+                ))}
+              </ul>
             </li>
-            <li>
+            <li className="ml-auto">
               <a href="/persons">Actor/Actress</a>
             </li>
           </ul>
+        )}
+        {genres && (
+          <div
+            className="relative"
+            onMouseEnter={() => setGenres(true)}
+            onMouseLeave={() => setGenres(false)}
+          >
+            <div className="hidden md:flex absolute flex-row bg-supernova-500 p-3">
+              <ul className="flex-colbg-supernova-500 pr-2">
+                <span className="text-lg">Movie</span>
+                {MovieGenres.map((genre) => (
+                  <li key={genre.id} className="hover:text-gray-100">
+                    <a href={"/?genre=" + genre.id}>{genre.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         )}
       </div>
     </nav>
