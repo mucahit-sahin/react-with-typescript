@@ -11,13 +11,15 @@ const Navbar = () => {
   let { pathname } = useLocation();
   const history = useHistory();
 
+  // for search
   if (pathname === "/person") pathname = "/persons";
   else if (pathname === "/movie") pathname = "/";
+  else if (pathname === "/tvserie") pathname = "/tvseries";
 
   useEffect(() => {
     if (pathname === "/") setSearchPath("/");
     else if (pathname === "/persons") setSearchPath("/persons");
-    else if (pathname === "/tv") setSearchPath("/tv");
+    else if (pathname === "/tvseries") setSearchPath("/tvseries");
   }, [pathname]);
 
   return (
@@ -39,7 +41,10 @@ const Navbar = () => {
               >
                 Movies
               </a>
-              <a href="/tv" className="mr-4 text-gray-800 hover:text-gray-700">
+              <a
+                href="/tvseries"
+                className="mr-4 text-gray-800 hover:text-gray-700"
+              >
                 TV Series
               </a>
               <a href="/persons" className="mr-4 hover:text-gray-700">
@@ -95,7 +100,7 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="ml-auto">
-              <a href="/tv">TV Series</a>
+              <a href="/tvseries">TV Series</a>
             </li>
             <li className="ml-auto">
               <a href="/persons">Actor/Actress</a>

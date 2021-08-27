@@ -11,6 +11,12 @@ function tvReducer (state:TvSeriesState = defaultState,action:TvAction) {
             return {...state,data:action.payload,loading:false,error:""};
         case "GET_TV_ERROR":
             return { ...state, loading: false, error: "There is a error!" };
+        case "GET_TV_SERIE_START":
+            return {...state,loading:true,error:""};
+        case "GET_TV_SERIE_SUCCESS":
+            return {...state,tvDetails:action.payload,loading:false,error:""};
+        case "GET_TV_SERIE_ERROR":
+            return { ...state, loading: false, error: "There is a error!" };
         default:
             return state;
     }

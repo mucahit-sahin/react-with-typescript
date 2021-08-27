@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { AppState } from "../store";
@@ -7,21 +7,27 @@ import Pagination from "./Pagination";
 import TvItem from "./TvItem";
 
 const TvSeries = () => {
+  const [title, setTitle] = useState<string>("");
   const dispatch = useDispatch();
   let { pathname } = useLocation();
   const pageNumber = new URLSearchParams(useLocation().search).get("page");
   const search = new URLSearchParams(useLocation().search).get("search");
 
   useEffect(() => {
-    if (search) dispatch(searchTvSeries(pageNumber, search));
-    else dispatch(getPopularTvSeries(pageNumber));
+    if (search) {
+      dispatch(searchTvSeries(pageNumber, search));
+      setTitle('"' + search + '"');
+    } else {
+      dispatch(getPopularTvSeries(pageNumber));
+      setTitle("Popular TV Series");
+    }
   }, [dispatch, pageNumber, search]);
   const { data, loading } = useSelector((state: AppState) => state.tv);
 
   return (
     <div className="flex flex-col">
       <div className="container mx-auto my-2">
-        <span className="text-4xl">Popular TV Series</span>
+        <span className="text-4xl">{title}</span>
       </div>
       <div className="container mx-auto grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {loading ? (

@@ -19,7 +19,7 @@ const Pagination = ({
 }: PaginationTypes) => {
   const [path, setPath] = useState<string>("/");
   useEffect(() => {
-    if (pathname === "/tv") setPath("/tv");
+    if (pathname === "/tvseries") setPath("/tvseries");
     else if (pathname === "/persons") setPath("/persons");
     else setPath("/");
   }, [pathname]);

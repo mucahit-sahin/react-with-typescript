@@ -1,5 +1,5 @@
 import api from "../../api";
-import { TvDispatch, TvSeries } from "../../types/tv";
+import { TvDetail, TvDispatch, TvSeries } from "../../types/tv";
 
 export const getPopularTvSeries= (pageNumber:string|null) => async (dispatch: TvDispatch) => {
     dispatch({ type: "GET_TV_START" });
@@ -21,5 +21,15 @@ export const searchTvSeries = (pageNumber:string|null,search:string) => async (d
         dispatch({ type: "GET_TV_SUCCESS" ,payload:response.data});
     } catch (error) {
         dispatch({ type: "GET_TV_ERROR" });
+    }
+}
+
+export const getTvDetails = (id:string) => async (dispatch: TvDispatch) => {
+    dispatch({ type: "GET_TV_SERIE_START" });
+    try {
+        const response = await api.get<TvDetail>(`tv/${id}?api_key=ce2cd2a272535ed78b02d47570778045&language=en-US`);
+        dispatch({ type: "GET_TV_SERIE_SUCCESS", payload: response.data });
+    } catch (error) {
+        dispatch({ type: "GET_TV_SERIE_ERROR" });
     }
 }

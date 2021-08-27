@@ -10,3 +10,9 @@
   box-sizing: border-box;
   font-family: "Myriad Pro", sans-serif;
 }
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  color: #ffcb04;
+  font-size: 22px !important;
+}

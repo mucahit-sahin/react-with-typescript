@@ -7,7 +7,7 @@ interface TvItemProps {
 const TvItem = ({ tv }: TvItemProps) => {
   const { poster_path, vote_average, id, name, first_air_date } = tv;
   return (
-    <a href={"/movie?id=" + id} key={id}>
+    <a href={"/tvserie?id=" + id} key={id}>
       <div className="flex flex-col w-full">
         <div className="">
           <img
