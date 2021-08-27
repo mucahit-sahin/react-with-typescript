@@ -4,6 +4,7 @@ import MovieDetails from "./Components/MovieDetails";
 import Navbar from "./Components/Navbar";
 import PersonDetails from "./Components/PersonDetails";
 import Persons from "./Components/Persons";
+import TvSeries from "./Components/TvSeries";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route path="/persons">
           <Persons />
+        </Route>
+        <Route path="/tv">
+          <TvSeries />
         </Route>
         <Route path="/movie:id?">
           <MovieDetails />

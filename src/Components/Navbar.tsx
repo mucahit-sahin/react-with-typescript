@@ -13,20 +13,26 @@ const Navbar = () => {
   if (pathname === "/person") pathname = "/persons";
   if (pathname === "/movie") pathname = "/";
   return (
-    <nav className="bg-supernova-500 " onMouseLeave={() => setGenres(false)}>
+    <nav className="bg-supernova-500 ">
       <div className="container mx-auto px-3 py-2 flex flex-col ">
         <div className="flex flex-row items-center">
           <div className="flex-1  transition duration-500 ease-in-out md:hidden">
             <AiOutlineMenu onClick={() => setMenu((menu) => !menu)} />
           </div>
           <div className="hidden md:flex flex-1 items-center">
-            <ul className="hidden md:block flex-row">
+            <ul
+              className="hidden md:block flex-row"
+              onMouseLeave={() => setGenres(false)}
+            >
               <a
                 href="/"
                 className="mr-4 text-gray-800 hover:text-gray-700"
                 onMouseEnter={() => setGenres(true)}
               >
                 Movies
+              </a>
+              <a href="/tv" className="mr-4 text-gray-800 hover:text-gray-700">
+                TV Series
               </a>
               <a href="/persons" className="mr-4 hover:text-gray-700">
                 Actor/Actress
@@ -79,6 +85,9 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
+            </li>
+            <li className="ml-auto">
+              <a href="/tv">TV Series</a>
             </li>
             <li className="ml-auto">
               <a href="/persons">Actor/Actress</a>

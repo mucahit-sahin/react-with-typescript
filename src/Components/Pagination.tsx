@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
 interface PaginationTypes {
@@ -16,13 +17,20 @@ const Pagination = ({
   pathname,
   genre,
 }: PaginationTypes) => {
+  const [path, setPath] = useState<string>("/");
+  useEffect(() => {
+    if (pathname === "/tv") setPath("/tv");
+    else if (pathname === "/persons") setPath("/persons");
+    else setPath("/");
+  }, [pathname]);
+
   return (
     <div className="flex flex-1 items-center justify-center my-2">
       <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
         <div className="flex-1 flex justify-between sm:hidden">
           <a
             href={
-              (pathname ? pathname : "/") +
+              path +
               (parseInt(pageNumber) === 1
                 ? "?page=" + pageNumber + (search ? "&&search=" + search : "")
                 : "?page=" +
@@ -36,7 +44,7 @@ const Pagination = ({
           </a>
           <a
             href={
-              (pathname ? pathname : "/") +
+              path +
               (parseInt(pageNumber) === total_pages
                 ? "?page=" + pageNumber + (search ? "&&search=" + search : "")
                 : "?page=" +
@@ -64,7 +72,7 @@ const Pagination = ({
             >
               <a
                 href={
-                  (pathname ? pathname : "/") +
+                  path +
                   (parseInt(pageNumber) === 1
                     ? "?page=" +
                       pageNumber +
@@ -81,7 +89,7 @@ const Pagination = ({
               </a>
               <a
                 href={
-                  (pathname ? pathname : "/") +
+                  path +
                   "?page=" +
                   pageNumber +
                   (search ? "&&search=" + search : "") +
@@ -94,7 +102,7 @@ const Pagination = ({
               </a>
               <a
                 href={
-                  (pathname ? pathname : "/") +
+                  path +
                   "?page=" +
                   (parseInt(pageNumber) + 1) +
                   (search ? "&&search=" + search : "") +
@@ -109,7 +117,7 @@ const Pagination = ({
               </span>
               <a
                 href={
-                  (pathname ? pathname : "/") +
+                  path +
                   "?page=" +
                   (total_pages - 1) +
                   (search ? "&&search=" + search : "") +
@@ -121,7 +129,7 @@ const Pagination = ({
               </a>
               <a
                 href={
-                  (pathname ? pathname : "/") +
+                  path +
                   "?page=" +
                   total_pages +
                   (search ? "&&search=" + search : "") +
@@ -133,7 +141,7 @@ const Pagination = ({
               </a>
               <a
                 href={
-                  (pathname ? pathname : "/") +
+                  path +
                   (parseInt(pageNumber) === total_pages
                     ? "?page=" +
                       pageNumber +
