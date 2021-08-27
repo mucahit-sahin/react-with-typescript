@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
-import { MovieGenres } from "../data/genres";
+import { MovieGenres, TvGenres } from "../data/genres";
 
 const Navbar = () => {
   const [search, setSearch] = useState<string>("");
   const [searchPath, setSearchPath] = useState<string>("");
   const [menu, setMenu] = useState<boolean>(false);
-  const [genres, setGenres] = useState<boolean>(false);
+  const [movieGenres, setMovieGenres] = useState<boolean>(false);
+  const [tvGenres, setTvGenres] = useState<boolean>(false);
   let { pathname } = useLocation();
   const history = useHistory();
 
@@ -25,25 +26,35 @@ const Navbar = () => {
   return (
     <nav className="bg-supernova-500 ">
       <div className="container mx-auto px-3 py-2 flex flex-col ">
-        <div className="flex flex-row items-center">
+        <div
+          className="flex flex-row items-center"
+          onMouseLeave={() => {
+            setMovieGenres(false);
+            setTvGenres(false);
+          }}
+        >
           <div className="flex-1  transition duration-500 ease-in-out md:hidden">
             <AiOutlineMenu onClick={() => setMenu((menu) => !menu)} />
           </div>
           <div className="hidden md:flex flex-1 items-center">
-            <ul
-              className="hidden md:block flex-row"
-              onMouseLeave={() => setGenres(false)}
-            >
+            <ul className="hidden md:block flex-row">
               <a
                 href="/"
                 className="mr-4 text-gray-800 hover:text-gray-700"
-                onMouseEnter={() => setGenres(true)}
+                onMouseEnter={() => {
+                  setMovieGenres(true);
+                  setTvGenres(false);
+                }}
               >
                 Movies
               </a>
               <a
                 href="/tvseries"
                 className="mr-4 text-gray-800 hover:text-gray-700"
+                onMouseEnter={() => {
+                  setTvGenres(true);
+                  setMovieGenres(false);
+                }}
               >
                 TV Series
               </a>
@@ -101,17 +112,27 @@ const Navbar = () => {
             </li>
             <li className="ml-auto">
               <a href="/tvseries">TV Series</a>
+              <ul className="ml-3 ">
+                {TvGenres.map((genre) => (
+                  <li key={genre.id} className="hover:text-gray-100">
+                    <a href={"/tvseries?genre=" + genre.id}>{genre.name}</a>
+                  </li>
+                ))}
+              </ul>
             </li>
             <li className="ml-auto">
               <a href="/persons">Actor/Actress</a>
             </li>
           </ul>
         )}
-        {genres && (
+        {movieGenres && (
           <div
             className="relative"
-            onMouseEnter={() => setGenres(true)}
-            onMouseLeave={() => setGenres(false)}
+            onMouseEnter={() => {
+              setMovieGenres(true);
+              setTvGenres(false);
+            }}
+            onMouseLeave={() => setMovieGenres(false)}
           >
             <div className="hidden md:flex absolute flex-row bg-supernova-500 p-3">
               <ul className="flex-colbg-supernova-500 pr-2">
@@ -119,6 +140,27 @@ const Navbar = () => {
                 {MovieGenres.map((genre) => (
                   <li key={genre.id} className="hover:text-gray-100">
                     <a href={"/?genre=" + genre.id}>{genre.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+        {tvGenres && (
+          <div
+            className="relative"
+            onMouseEnter={() => {
+              setTvGenres(true);
+              setMovieGenres(false);
+            }}
+            onMouseLeave={() => setTvGenres(false)}
+          >
+            <div className="hidden md:flex absolute flex-row bg-supernova-500 p-3">
+              <ul className="flex-colbg-supernova-500 pr-2">
+                <span className="text-lg">Tv Series</span>
+                {TvGenres.map((genre) => (
+                  <li key={genre.id} className="hover:text-gray-100">
+                    <a href={"/tvseries?genre=" + genre.id}>{genre.name}</a>
                   </li>
                 ))}
               </ul>

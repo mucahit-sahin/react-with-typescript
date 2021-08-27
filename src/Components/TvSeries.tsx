@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { TvGenres } from "../data/genres";
 import { AppState } from "../store";
 import { getPopularTvSeries, searchTvSeries } from "../store/actions/tvAction";
 import Pagination from "./Pagination";
@@ -12,16 +13,19 @@ const TvSeries = () => {
   let { pathname } = useLocation();
   const pageNumber = new URLSearchParams(useLocation().search).get("page");
   const search = new URLSearchParams(useLocation().search).get("search");
+  const genre = new URLSearchParams(useLocation().search).get("genre");
 
   useEffect(() => {
     if (search) {
       dispatch(searchTvSeries(pageNumber, search));
       setTitle('"' + search + '"');
     } else {
-      dispatch(getPopularTvSeries(pageNumber));
-      setTitle("Popular TV Series");
+      dispatch(getPopularTvSeries(pageNumber, genre));
+      if (genre)
+        setTitle(TvGenres.find((x) => x.id === parseInt(genre))?.name || genre);
+      else setTitle("Popular TV Series");
     }
-  }, [dispatch, pageNumber, search]);
+  }, [dispatch, pageNumber, search, genre]);
   const { data, loading } = useSelector((state: AppState) => state.tv);
 
   return (
@@ -49,6 +53,7 @@ const TvSeries = () => {
           pageNumber={pageNumber || "1"}
           search={search}
           pathname={pathname}
+          genre={genre}
         />
       )}
     </div>

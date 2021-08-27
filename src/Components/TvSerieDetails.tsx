@@ -47,7 +47,7 @@ const TvSerieDetails = () => {
                   alt="poster"
                 />
               </div>
-              <div className=" my-5 flex flex-col sm:mx-10 w-2/3">
+              <div className="my-5 flex flex-col flex-1 sm:w-2/3 sm:mx-10 ">
                 <span className="text-left text-lg md:text-xl lg:text-2xl xl:text-4xl ">
                   {tvDetails?.name}
                 </span>

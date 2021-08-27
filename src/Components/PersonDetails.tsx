@@ -36,7 +36,7 @@ const PersonDetails = () => {
               alt="person"
             />
           </div>
-          <div className="flex flex-col p-2 sm:w-2/3 ">
+          <div className="my-5 flex flex-col flex-1 p-2 sm:w-2/3 ">
             <span className="text-3xl mb-4">{personDetails?.name}</span>
             <div className="flex flex-col mb-2">
               <span className="text-xl  mb-1">Biography</span>
