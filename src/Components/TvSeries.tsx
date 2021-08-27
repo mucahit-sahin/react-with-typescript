@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { AppState } from "../store";
-import { getPopularTvSeries } from "../store/actions/tvAction";
+import { getPopularTvSeries, searchTvSeries } from "../store/actions/tvAction";
 import Pagination from "./Pagination";
 import TvItem from "./TvItem";
 
@@ -10,10 +10,12 @@ const TvSeries = () => {
   const dispatch = useDispatch();
   let { pathname } = useLocation();
   const pageNumber = new URLSearchParams(useLocation().search).get("page");
+  const search = new URLSearchParams(useLocation().search).get("search");
 
   useEffect(() => {
-    dispatch(getPopularTvSeries(pageNumber));
-  }, [dispatch, pageNumber]);
+    if (search) dispatch(searchTvSeries(pageNumber, search));
+    else dispatch(getPopularTvSeries(pageNumber));
+  }, [dispatch, pageNumber, search]);
   const { data, loading } = useSelector((state: AppState) => state.tv);
 
   return (
@@ -39,7 +41,7 @@ const TvSeries = () => {
           total_pages={data.total_pages}
           total_results={data.total_results}
           pageNumber={pageNumber || "1"}
-          search={null}
+          search={search}
           pathname={pathname}
         />
       )}

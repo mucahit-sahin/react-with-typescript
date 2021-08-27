@@ -1,17 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MovieGenres } from "../data/genres";
 
 const Navbar = () => {
   const [search, setSearch] = useState<string>("");
+  const [searchPath, setSearchPath] = useState<string>("");
   const [menu, setMenu] = useState<boolean>(false);
   const [genres, setGenres] = useState<boolean>(false);
   let { pathname } = useLocation();
   const history = useHistory();
 
   if (pathname === "/person") pathname = "/persons";
-  if (pathname === "/movie") pathname = "/";
+  else if (pathname === "/movie") pathname = "/";
+
+  useEffect(() => {
+    if (pathname === "/") setSearchPath("/");
+    else if (pathname === "/persons") setSearchPath("/persons");
+    else if (pathname === "/tv") setSearchPath("/tv");
+  }, [pathname]);
+
   return (
     <nav className="bg-supernova-500 ">
       <div className="container mx-auto px-3 py-2 flex flex-col ">
@@ -51,7 +59,7 @@ const Navbar = () => {
               className="flex-grow w-full px-4 py-2 rounded-l-full rounded-r-full text-sm focus:outline-none"
               onKeyDown={(e) =>
                 e.key === "Enter" &&
-                history.push((pathname ? pathname : "/") + "?search=" + search)
+                history.push(searchPath + "?search=" + search)
               }
             />
           </div>
