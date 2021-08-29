@@ -1,10 +1,11 @@
 import { ThunkDispatch } from "redux-thunk";
 
 export interface TvSeriesState {
-  data: TvSeries;
-  tvDetails?: TvDetail;
-  loading: boolean;
-  error: string;
+    data: TvSeries;
+    tvDetails?: TvDetail;
+    tvCredits?: TvCredits;
+    loading: boolean;
+    error: string;
 }
 export interface TvSerie {
     backdrop_path: string;
@@ -131,7 +132,42 @@ export interface TvDetail {
     vote_count: number;
 }
 
-// -Tv Serie Detail
+// Tv Series Credits
+
+
+export interface Cast {
+    adult: boolean;
+    gender: number;
+    id: number;
+    known_for_department: string;
+    name: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string;
+    character: string;
+    credit_id: string;
+    order: number;
+}
+
+export interface Crew {
+    adult: boolean;
+    gender: number;
+    id: number;
+    known_for_department: string;
+    name: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string;
+    credit_id: string;
+    department: string;
+    job: string;
+}
+
+export interface TvCredits {
+    cast: Cast[];
+    crew: Crew[];
+    id: number;
+}
 
 
 // Actions
@@ -161,7 +197,20 @@ interface GET_TV_SERIE_ERROR {
     type: "GET_TV_SERIE_ERROR";
 }
 
-export type TvAction = GET_START | GET_SUCCESS | GET_ERROR |GET_TV_SERIE_START | GET_TV_SERIE_SUCCESS | GET_TV_SERIE_ERROR ;
+interface GET_TV_CREDIT_START {
+    type: "GET_TV_CREDIT_START";
+}
+  
+interface GET_TV_CREDIT_SUCCESS {
+    type: "GET_TV_CREDIT_SUCCESS";
+    payload: TvCredits;
+}
+  
+interface GET_TV_CREDIT_ERROR {
+    type: "GET_TV_CREDIT_ERROR";
+}
+
+export type TvAction = GET_START | GET_SUCCESS | GET_ERROR |GET_TV_SERIE_START | GET_TV_SERIE_SUCCESS | GET_TV_SERIE_ERROR|GET_TV_CREDIT_START | GET_TV_CREDIT_SUCCESS | GET_TV_CREDIT_ERROR ;
 
 export type TvDispatch = ThunkDispatch<
   TvSeriesState,

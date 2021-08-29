@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { FaImdb } from "react-icons/fa";
+
 import { AppState } from "../store";
 import { getMovieCredit, getMovieDetails } from "../store/actions/movieAction";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const id = new URLSearchParams(useLocation().search).get("id");
 
@@ -101,27 +102,43 @@ const MovieDetails = () => {
                   ))}
                 </div>
                 <div className="flex flex-col mt-3">
-                  <span className="text-lg mb-2">Cast</span>
-                  {movieCredit?.cast.map((person) => (
-                    <div
-                      key={person.id}
-                      className="flex flex-row items-center border-b hover:bg-gray-200"
-                      onClick={() => history.push("/person?id=" + person.id)}
+                  <span className="text-2xl">Cast</span>
+                  <div className="flex flex-row">
+                    <Swiper
+                      slidesPerView={4}
+                      spaceBetween={0}
+                      freeMode={true}
+                      navigation={true}
+                      className="w-full"
                     >
-                      <div className="flex flex-1 p-1">
-                        <img
-                          className="h-20"
-                          src={
-                            "https://image.tmdb.org/t/p/w200" +
-                            person.profile_path
-                          }
-                          alt="cast"
-                        />
-                      </div>
-                      <span className="flex flex-1">{person.name}</span>
-                      <span className="flex flex-1">{person.character} </span>
-                    </div>
-                  ))}
+                      {movieCredit?.cast.map((person) => (
+                        <SwiperSlide>
+                          <a
+                            href={"/person?id=" + person.id}
+                            className="p-2 flex flex-col items-center justify-center "
+                          >
+                            <img
+                              className="rounded w-full"
+                              src={
+                                person.profile_path
+                                  ? `https://image.tmdb.org/t/p/w154${person.profile_path}`
+                                  : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWcWg0E8pSjBNi0TtiZsqu8uD2PAr_K11DA&usqp=CAU"
+                              }
+                              alt={person.id + "person"}
+                            />
+                            <div className="hidden md:flex rounded flex-col flex-1 w-full bg-supernova-500 bg-opacity-50">
+                              <span className="text-center text-lg">
+                                {person.name}
+                              </span>
+                              <span className="text-center text-lg">
+                                {person.character}
+                              </span>
+                            </div>
+                          </a>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
                 </div>
               </div>
             </div>
