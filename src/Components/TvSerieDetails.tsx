@@ -42,10 +42,10 @@ const TvSerieDetails = () => {
                 />
               </div>
               <div className="my-5 flex flex-col flex-1 sm:w-2/3 sm:mx-10 ">
-                <span className="text-left text-lg md:text-xl lg:text-2xl xl:text-4xl font-extrabold">
+                <span className="text-left text-lg md:text-xl lg:text-2xl xl:text-4xl font-extrabold dark:text-supernova-500">
                   {tvDetails?.name}
                 </span>
-                <span className="text-left text-sm font-semibold md:text-lg lg:text-xl xl:text-2xl  my-5">
+                <span className="text-left text-sm font-semibold md:text-lg lg:text-xl xl:text-2xl  my-5 dark:text-supernova-500">
                   {tvDetails?.overview}
                 </span>
                 <div className="flex items-center flex-row">

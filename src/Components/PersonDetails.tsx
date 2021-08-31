@@ -37,10 +37,14 @@ const PersonDetails = () => {
             />
           </div>
           <div className="my-5 flex flex-col flex-1 p-2 sm:w-2/3 ">
-            <span className="text-3xl mb-4">{personDetails?.name}</span>
+            <span className="text-3xl mb-4 dark:text-supernova-500">
+              {personDetails?.name}
+            </span>
             <div className="flex flex-col mb-2">
               <span className="text-xl  mb-1">Biography</span>
-              <p className="text-base">{personDetails?.biography}</p>
+              <p className="text-base dark:text-supernova-500">
+                {personDetails?.biography}
+              </p>
             </div>
             <div className="flex flex-row">
               <span className="flex flex-1">
