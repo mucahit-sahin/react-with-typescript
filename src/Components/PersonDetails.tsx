@@ -22,12 +22,12 @@ const PersonDetails = () => {
   );
 
   return (
-    <div className="flex flex-col container mx-auto w-full mt-5 sm:flex-row">
+    <div className="flex flex-col container mx-auto w-full mt-5 sm:flex-row dark:text-supernova-500">
       {loading ? (
         <span>Loading</span>
       ) : (
         <>
-          <div className="flex p-2 justify-center sm:w-1/3">
+          <div className="flex p-2 justify-center sm:w-1/3 ">
             <img
               className="rounded sm:h-96 "
               src={
@@ -54,12 +54,12 @@ const PersonDetails = () => {
               </span>
             </div>
             {personCredits?.cast.length !== 0 && (
-              <div className="flex flex-col">
+              <div className="flex flex-col dark:bg-black">
                 <span className="text-lg">Cast</span>
-                <div className="flex flex-col p-2  bg-gray-100 rounded">
+                <div className="flex flex-col p-2  bg-gray-100 rounded dark:bg-black">
                   {personCredits?.cast.map((movie) => (
                     <div
-                      className="flex flex-row items-center border-b hover:bg-gray-200"
+                      className="flex flex-row items-center border-b hover:bg-gray-200 dark:hover:bg-gray-800"
                       onClick={() => history.push("/movie?id=" + movie.id)}
                     >
                       <div className="flex flex-1 p-1">

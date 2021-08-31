@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MovieGenres, TvGenres } from "../data/genres";
+import ToggleDark from "./ToggleDark";
 
 const Navbar = () => {
   const [search, setSearch] = useState<string>("");
@@ -72,7 +73,7 @@ const Navbar = () => {
               }
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="flex-grow w-full px-4 py-2 rounded-l-full rounded-r-full text-sm focus:outline-none"
+              className="flex-grow w-full px-4 py-2 rounded-l-full rounded-r-full text-sm focus:outline-none dark:bg-black dark:text-supernova-500"
               onKeyDown={(e) =>
                 e.key === "Enter" &&
                 history.push(searchPath + "?search=" + search)
@@ -80,6 +81,7 @@ const Navbar = () => {
             />
           </div>
           <div className="flex-1 flex items-center justify-end">
+            <ToggleDark dark={localStorage.theme === "dark"} />
             <a
               href="https://github.com/mucahit-sahin"
               className="rounded-full text-white focus:outline-none hover:text-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"

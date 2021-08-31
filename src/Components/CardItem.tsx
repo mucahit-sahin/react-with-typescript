@@ -9,7 +9,7 @@ const CardItem = ({ movie }: CardItemProps) => {
   const { poster_path, title, vote_average, release_date, id } = movie;
   return (
     <a href={"/movie?id=" + id} key={id}>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full dark:text-supernova-500">
         <div className="">
           <img
             className="w-full"
@@ -21,9 +21,9 @@ const CardItem = ({ movie }: CardItemProps) => {
             alt="poster"
           />
         </div>
-        <span className="text-center mt-2">{title}</span>
+        <span className="text-center mt-2 ">{title}</span>
         <div className="flex flex-1 w-full flex-row">
-          <span className="flex items-start bg-yellow-500 rounded p-2">
+          <span className="flex items-start bg-yellow-500 rounded p-2 dark:text-white">
             {vote_average}
           </span>
           <span className="ml-auto flex items-center">{release_date}</span>

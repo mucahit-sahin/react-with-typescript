@@ -33,18 +33,18 @@ const Items = () => {
   return (
     <div className="flex flex-col">
       <div className="container mx-auto my-2">
-        <span className="text-4xl">{title}</span>
+        <span className="text-4xl dark:text-supernova-500">{title}</span>
       </div>
       <div className="container mx-auto grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {loading ? (
           <div>
-            <span>Yükleniyor</span>
+            <span className="dark:text-supernova-500">Yükleniyor</span>
           </div>
         ) : data.total_results ? (
           data.results?.map((movie) => <CardItem movie={movie} />)
         ) : (
           <div>
-            <span>Yükleniyor</span>
+            <span className="dark:text-supernova-500">Yükleniyor</span>
           </div>
         )}
       </div>

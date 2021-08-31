@@ -24,7 +24,7 @@ const Persons = () => {
   return (
     <div className="flex flex-col">
       <div className="container mx-auto my-2">
-        <span className="text-4xl">
+        <span className="text-4xl dark:text-supernova-500">
           {search ? '"' + search + '"' : "Popular Persons"}
         </span>
       </div>

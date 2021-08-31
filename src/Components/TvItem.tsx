@@ -8,7 +8,7 @@ const TvItem = ({ tv }: TvItemProps) => {
   const { poster_path, vote_average, id, name, first_air_date } = tv;
   return (
     <a href={"/tvserie?id=" + id} key={id}>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full dark:text-supernova-500">
         <div className="">
           <img
             className="w-full"
@@ -22,7 +22,7 @@ const TvItem = ({ tv }: TvItemProps) => {
         </div>
         <span className="text-center mt-2">{name}</span>
         <div className="flex flex-1 w-full flex-row">
-          <span className="flex items-start bg-yellow-500 rounded p-2">
+          <span className="flex items-start bg-yellow-500 rounded p-2 dark:text-black">
             {vote_average}
           </span>
           <span className="ml-auto flex items-center">{first_air_date}</span>

@@ -6,7 +6,6 @@ export const getPopularMovies = (pageNumber:string|null,genre:string|null) => as
     try {
         const response = await api.get<Movies>(`movie/popular?api_key=ce2cd2a272535ed78b02d47570778045&language=en-US&page=${pageNumber === null ? "1" : pageNumber}&${genre && "with_genres="+genre}`);
         dispatch({ type: "GET_MOVIES_SUCCESS" ,payload:response.data});
-        console.log(response.data);
     } catch (error) {
         dispatch({ type: "GET_MOVIES_ERROR" });
     }

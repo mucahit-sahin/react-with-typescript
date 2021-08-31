@@ -7,7 +7,11 @@ interface PersonItemProps {
 const PersonItem = ({ person }: PersonItemProps) => {
   const { profile_path, name, known_for_department, popularity, id } = person;
   return (
-    <a href={"/person?id=" + id} key={id} className="flex flex-col w-full">
+    <a
+      href={"/person?id=" + id}
+      key={id}
+      className="flex flex-col w-full dark:text-supernova-500"
+    >
       <div className="flex">
         <img
           className="w-full"
@@ -20,8 +24,8 @@ const PersonItem = ({ person }: PersonItemProps) => {
         />
       </div>
       <span className="text-center mt-2">{name}</span>
-      <div className="flex flex-1 w-full flex-row">
-        <span className="flex items-start bg-yellow-500 rounded p-2">
+      <div className="flex flex-1 w-full flex-row ">
+        <span className="flex items-start bg-yellow-500 rounded p-2 dark:text-black">
           {popularity}
         </span>
         <span className="ml-auto flex items-center">

@@ -25,8 +25,8 @@ const Pagination = ({
   }, [pathname]);
 
   return (
-    <div className="flex flex-1 items-center justify-center my-2">
-      <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+    <div className="flex flex-1 items-center justify-center my-2 ">
+      <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 dark:bg-black ">
         <div className="flex-1 flex justify-between sm:hidden">
           <a
             href={
@@ -38,7 +38,7 @@ const Pagination = ({
                   (search ? "&&search=" + search : "")) +
               (genre ? "&&genre=" + genre : "")
             }
-            className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+            className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 dark:text-supernova-500"
           >
             Previous
           </a>
@@ -52,14 +52,14 @@ const Pagination = ({
                   (search ? "&&search=" + search : "")) +
               (genre ? "&&genre=" + genre : "")
             }
-            className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+            className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 dark:text-supernova-500"
           >
             Next
           </a>
         </div>
         <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-gray-700 dark:text-supernova-500">
               Showing <span className="font-medium">1</span> to{" "}
               <span className="font-medium">{total_pages}</span> of{" "}
               <span className="font-medium">{total_results}</span> results
@@ -67,7 +67,7 @@ const Pagination = ({
           </div>
           <div>
             <nav
-              className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+              className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px "
               aria-label="Pagination"
             >
               <a
@@ -82,7 +82,7 @@ const Pagination = ({
                       (search ? "&&search=" + search : "")) +
                   (genre ? "&&genre=" + genre : "")
                 }
-                className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                className="dark:bg-black relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
               >
                 <span className="sr-only">Previous</span>
                 <AiFillCaretLeft />
@@ -96,7 +96,7 @@ const Pagination = ({
                   (genre ? "&&genre=" + genre : "")
                 }
                 aria-current="page"
-                className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                className="dark:bg-black z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
                 {pageNumber}
               </a>
@@ -108,11 +108,11 @@ const Pagination = ({
                   (search ? "&&search=" + search : "") +
                   (genre ? "&&genre=" + genre : "")
                 }
-                className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                className="dark:bg-black bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
                 {parseInt(pageNumber) + 1}
               </a>
-              <span className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+              <span className="dark:bg-black relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
                 ...
               </span>
               <a
@@ -123,7 +123,7 @@ const Pagination = ({
                   (search ? "&&search=" + search : "") +
                   (genre ? "&&genre=" + genre : "")
                 }
-                className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                className="dark:bg-black bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
                 {total_pages - 1}
               </a>
@@ -135,7 +135,7 @@ const Pagination = ({
                   (search ? "&&search=" + search : "") +
                   (genre ? "&&genre=" + genre : "")
                 }
-                className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                className="dark:bg-black bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
               >
                 {total_pages}
               </a>
@@ -151,7 +151,7 @@ const Pagination = ({
                       (search ? "&&search=" + search : "")) +
                   (genre ? "&&genre=" + genre : "")
                 }
-                className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                className="dark:bg-black relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
               >
                 <span className="sr-only">Next</span>
                 <AiFillCaretRight />

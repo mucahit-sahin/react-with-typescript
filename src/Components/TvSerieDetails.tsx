@@ -33,8 +33,8 @@ const TvSerieDetails = () => {
               backgroundPosition: "center",
             }}
           >
-            <div className="flex flex-col  w-full bg-supernova-300 bg-opacity-60 min-h-screen sm:flex-row px-10">
-              <div className="mt-10 flex justify-center sm:w-1/3 sm:block">
+            <div className="flex flex-col  w-full bg-supernova-300 bg-opacity-60 dark:bg-black dark:bg-opacity-50 min-h-screen sm:flex-row px-10">
+              <div className="mt-10 flex justify-center sm:w-1/3 sm:block ">
                 <img
                   className="rounded w-auto h-80 sm:h-auto "
                   src={`https://image.tmdb.org/t/p/w500${tvDetails?.poster_path}`}
