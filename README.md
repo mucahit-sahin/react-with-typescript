@@ -2,6 +2,8 @@
 
 In this project, I made a site where you can access movie and TV series information. I used <a href="https://developers.themoviedb.org/3" target="_blank">TMDB</a> api service. I used typescript and tailwindcss for the first time in this project.
 
+<img src="https://github.com/mucahit-sahin/react-with-typescript/blob/master/img/img1.png">
+
 ## <a href="https://copypasteimdb.vercel.app" target="_blank">Live Demo</a>
 
 ## Used Technologies
