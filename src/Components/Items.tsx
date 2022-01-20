@@ -31,8 +31,8 @@ const Items = () => {
 
   const { data, loading } = useSelector((state: AppState) => state.movies);
   return (
-    <div className="flex flex-col">
-      <div className="container mx-auto my-2">
+    <div className="flex flex-col mx-auto max-w-7xl">
+      <div className="container  mx-auto my-2">
         <span className="text-4xl dark:text-supernova-500">{title}</span>
       </div>
       <div className="container mx-auto grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">

@@ -29,7 +29,7 @@ const TvSeries = () => {
   const { data, loading } = useSelector((state: AppState) => state.tv);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mx-auto max-w-7xl">
       <div className="container mx-auto my-2">
         <span className="text-4xl dark:text-supernova-500">{title}</span>
       </div>

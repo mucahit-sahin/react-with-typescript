@@ -22,7 +22,7 @@ const PersonDetails = () => {
   );
 
   return (
-    <div className="flex flex-col container mx-auto w-full mt-5 sm:flex-row dark:text-supernova-500">
+    <div className="flex flex-col container mx-auto max-w-7xl w-full mt-5 sm:flex-row dark:text-supernova-500">
       {loading ? (
         <span>Loading</span>
       ) : (

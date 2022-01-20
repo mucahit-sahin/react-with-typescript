@@ -26,7 +26,7 @@ const TvSerieDetails = () => {
       ) : (
         <>
           <div
-            className="container mx-auto  flex flex-col min-h-screen "
+            className="container mx-auto max-w-7xl  flex flex-col min-h-screen "
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/original/${tvDetails?.backdrop_path})`,
               backgroundRepeat: "no-repeat",

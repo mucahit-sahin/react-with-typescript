@@ -24,7 +24,7 @@ function App() {
     }
   }, []);
   return (
-    <div className="dark:bg-black">
+    <div className="dark:bg-black ">
       <Navbar />
       <Switch>
         <Route path="/" exact>

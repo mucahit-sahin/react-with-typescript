@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-supernova-500 ">
-      <div className="container mx-auto px-3 py-2 flex flex-col ">
+      <div className="container mx-auto max-w-7xl px-3 py-2 flex flex-col ">
         <div
           className="flex flex-row items-center"
           onMouseLeave={() => {

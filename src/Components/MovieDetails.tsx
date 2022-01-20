@@ -22,7 +22,7 @@ const MovieDetails = () => {
   );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mx-auto max-w-7xl">
       {loading ? (
         <span>Loading</span>
       ) : (
