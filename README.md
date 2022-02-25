@@ -4,7 +4,7 @@ In this project, I made a site where you can access movie and TV series informat
 
 <img src="https://github.com/mucahit-sahin/react-with-typescript/blob/master/img/img1.png">
 
-## <a href="https://copypasteimdb.vercel.app" target="_blank">Live Demo</a>
+## <a href="https://copypasteimdb.netlify.app/" target="_blank">Live Demo</a>
 
 ## Used Technologies
 
